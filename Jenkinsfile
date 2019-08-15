@@ -25,6 +25,11 @@ pipeline {
                 echo "Deploying ..."
             }
         }
+        stage('CleanWorkSpace'){
+            steps {
+                sh 'rm -rf ${WORKSPACE}/*'
+            }
+        }
     }
 }
 
