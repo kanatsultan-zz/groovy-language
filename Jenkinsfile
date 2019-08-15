@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo "Installing ..."
                 // echo "$BUILD_VERSION"
-                echo "$MY_GIT_TAG"
+                echo "This is a latest GIT TAG: $MY_GIT_TAG"
             }
         }
         stage('Test'){
