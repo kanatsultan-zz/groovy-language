@@ -45,5 +45,5 @@ def nextVersionFromGit(scope){
             break
     }
     // nextVersion
-    major
+    latestVersion
 }
