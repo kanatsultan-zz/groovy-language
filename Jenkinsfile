@@ -5,7 +5,7 @@ pipeline {
     agent any
     environment {
         BUILD_VERSION = nextVersionFromGit(scope)
-        def MY_GIT_TAG = sh(returnStdout: true, script: 'git describe --abbrev=0 --tags').trim()
+        def MY_GIT_TAG = sh(returnStdout: true, script: 'git describe --abbrev=0 --tags').trim().tokenize('.'[0])
     }
     stages {
         stage('Install'){
