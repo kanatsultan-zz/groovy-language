@@ -2,9 +2,7 @@
 
 
 pipeline {
-    agent {
-        any
-    }
+    agent any
     environment {
         BUILD_VERSION = nextVersionFromGit(scope)
     }
