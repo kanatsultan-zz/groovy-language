@@ -11,7 +11,7 @@ pipeline {
         stage('Install'){
             steps {
                 echo "Installing ..."
-                echo "$BUILD_VERSION"
+                // echo "$BUILD_VERSION"
                 echo "$MY_GIT_TAG"
             }
         }
