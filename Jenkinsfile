@@ -10,6 +10,7 @@ pipeline {
         stage('Install'){
             steps {
                 echo "Installing ..."
+                echo $BUILD_VERSION
             }
         }
         stage('Test'){
