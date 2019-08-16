@@ -5,19 +5,20 @@ pipeline {
     agent any
     environment {
         BUILD_VERSION = nextVersionFromGit()
+        DELETED_TAGS = deleteAllTags()
         // def MY_GIT_TAG = sh(returnStdout: true, script: 'git describe --abbrev=0 --tags').trim().tokenize('.'[0])
     }
     stages {
         stage('Install'){
             steps {
                 echo "Installing ..."
-                // echo "$BUILD_VERSION"
-                echo "This is a latest GIT TAG: $MY_GIT_TAG"
+                echo "$BUILD_VERSION"
             }
         }
         stage('Test'){
             steps {
                 echo "Testing ..."
+                echo "$DELETED_TAGS"
             }
         }
         stage('Deploying'){
@@ -40,4 +41,9 @@ def nextVersionFromGit(){
     def latestVersion = sh returnStdout: true, script: 'git log -l'
     def intValue = latestVersion.tokenize().toSorted()
     return intValue
+}
+
+def deleteAllTags(){
+    def deleteLocalTags = sh returnStdout: true, script: 'git tag | xargs git tag -d'
+    return deleteLocalTags
 }
