@@ -38,7 +38,7 @@ pipeline {
 // Uses same tag for build release
 
 def nextVersionFromGit(){
-    def latestVersion = sh returnStdout: true, script: 'git log -l'
+    def latestVersion = sh returnStdout: true, script: 'git tag -l'
     def intValue = latestVersion.tokenize().toSorted()
     return intValue
 }
