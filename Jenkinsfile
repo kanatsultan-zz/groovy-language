@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Install'){
             steps {
-                sshagent(['kanat-ssh']){
+                sshagent(['kanat-ssh-github']){
                      sh 'git fetch --tags --force'
                 }
             }
