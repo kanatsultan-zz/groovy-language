@@ -11,9 +11,9 @@ pipeline {
     stages {
         stage('Install'){
             steps {
-                echo "Installing ..."
-                sh 'git fetch --tags --force'
-                echo "$BUILD_VERSION"
+                sshagent(['kanat-ssh']){
+                     sh 'git fetch --tags --force'
+                }
             }
         }
         stage('Test'){
@@ -24,6 +24,7 @@ pipeline {
         }
         stage('Deploying'){
             steps {
+                echo "$BUILD_VERSION"
                 echo "Deploying ..."
             }
         }
