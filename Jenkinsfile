@@ -12,6 +12,7 @@ pipeline {
         stage('Install'){
             steps {
                 echo "Installing ..."
+                sh 'git fetch --tags --force'
                 echo "$BUILD_VERSION"
             }
         }
